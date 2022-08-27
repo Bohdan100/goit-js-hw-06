@@ -28,21 +28,35 @@ picturesContainerEl.classList.add("gallery-taskThird");
 
 console.log("classList of picturesContainerEl:", picturesContainerEl.classList);
 
-const picturesElements = images.map(({ url, alt }) => {
-  const galleryItem = document.createElement("li");
-  galleryItem.setAttribute("width", "320");
-  const imageEl = document.createElement("img");
-  imageEl.setAttribute("src", url);
-  imageEl.setAttribute("alt", alt);
-  imageEl.setAttribute("width", "350");
-  imageEl.setAttribute("height", "200");
-
-  galleryItem.appendChild(imageEl);
-  imageEl.insertAdjacentHTML("beforebegin", `<h2>Photo: ${alt} </h2>`);
-
-  return galleryItem;
-});
+// ЧЕРЕЗ ШАБЛОННЫЕ СТРОКИ и insertAdjacentHTML
+// join - распыление массива, убрать запятые между элементами массива
+const picturesElements = images
+  .map(({ url, alt }) => {
+    return `<li width="320px">
+  <h2>Photo: ${alt}</h2>
+  <img src="${url}" alt="${alt}" width="350px" height="200px">
+  </img> </li>
+  `;
+  })
+  .join("");
 
 console.log(picturesElements);
 
-picturesContainerEl.append(...picturesElements);
+picturesContainerEl.insertAdjacentHTML("afterbegin", picturesElements);
+
+/////////////////////////////////////////////////////////////////
+// ВТОРОЙ ВАРИАНТ - ЧЕРЕЗ КОМАНДЫ createElement
+// const picturesElements = images.map(({ url, alt }) => {
+//   const galleryItem = document.createElement("li");
+//   galleryItem.setAttribute("width", "320");
+//   const imageEl = document.createElement("img");
+//   imageEl.setAttribute("src", url);
+//   imageEl.setAttribute("alt", alt);
+//   imageEl.setAttribute("width", "350");
+//   imageEl.setAttribute("height", "200");
+
+//   galleryItem.appendChild(imageEl);
+//   imageEl.insertAdjacentHTML("beforebegin", `<h2>Photo: ${alt} </h2>`);
+
+//   return galleryItem;
+// });

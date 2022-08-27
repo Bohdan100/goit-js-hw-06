@@ -14,19 +14,24 @@ function onCorrectLength(event) {
   console.log("inputMaxLength", inputMaxLength);
   console.log("typeof inputMaxLength", typeof inputMaxLength);
 
-  const inputLength = event.currentTarget.value.length;
+  const inputLength = event.target.value.length;
   console.log("inputLength", inputLength);
   console.log("typeof inputLength", typeof inputLength);
 
-  //   ТЕЛО ФУНКЦИИ - вариант 1
-  inputLength <= inputMaxLength
-    ? (inputEl.className = "valid")
-    : (inputEl.className = "invalid");
+  //   ТЕЛО ФУНКЦИИ - серый на 1-5, зеленый на 6, красный > 6
+  if (inputLength < inputMaxLength) {
+    inputEl.className = "";
+  }
+  if (inputLength === inputMaxLength) {
+    inputEl.className = "valid";
+  }
+  if (inputLength > inputMaxLength) {
+    inputEl.className = "invalid";
+  }
 
-  // ТЕЛО ФУНКЦИИ - вариант 2
-  //   if (inputLength <= inputMaxLength) {
-  //     inputEl.className = "valid";
-  //   } else {
-  //     inputEl.className = "invalid";
-  //   }
+  // ТЕЛО ФУНКЦИИ - красный на 1-5 и на > 6, зеленый на 6
+  //   inputLength === inputMaxLength
+  //     ? (inputEl.className = "valid")
+  //     : (inputEl.className = "invalid");
+  //
 }

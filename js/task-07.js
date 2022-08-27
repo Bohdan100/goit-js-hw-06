@@ -1,9 +1,11 @@
 const inputEl = document.querySelector("#font-size-control");
 console.log(inputEl.value);
+console.log(typeof inputEl.value);
 
 const textRangeEl = document.querySelector("#text");
-console.log(textRangeEl.textContent);
-console.log(textRangeEl.FontSize);
+textRangeEl.style.fontSize = `${Number(inputEl.value)}px`;
+
+console.log(textRangeEl);
 
 inputEl.addEventListener("input", onMeaningRange);
 

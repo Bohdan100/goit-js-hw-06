@@ -10,9 +10,11 @@ const colorNameEl = document.querySelector(".color");
 console.log(colorNameEl.textContent);
 
 function onButtonClickChangeColor(event) {
-  document.body.style.backgroundColor = `${getRandomHexColor()}`;
   colorNameEl.textContent = `${getRandomHexColor()}`;
-  console.log(colorNameEl.textContent);
+  document.body.style.backgroundColor = `${colorNameEl.textContent}`;
+
+  console.log("text color", colorNameEl.textContent);
+  console.log("backgroundColor", document.body.style.backgroundColor);
 }
 
 buttonEl.addEventListener("click", onButtonClickChangeColor);
